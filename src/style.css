@@ -1,6 +1,6 @@
 .scores {
   display: flex;
-  direction: column;
+  flex-direction: column;
   justify-items: center;
 }
 
@@ -21,7 +21,6 @@ li {
 
 .displayscore {
   width: 18vw;
-  height: fit-content;
   border: 1px solid #000;
 }
 
