@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import './style.css';
 
 document.querySelector('.displayscore').innerHTML = `<ul class="listscore">
