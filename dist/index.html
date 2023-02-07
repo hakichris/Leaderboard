@@ -1,33 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leaderbord</title>
-<script defer src="runtime.js"></script><script defer src="main.js"></script></head>
-<body>
+  <script defer src="runtime.js"></script><script defer src="main.js"></script></head>
+  <body>
     <header>
-    <h1 class="title">Leaderboard</h1>
+      <h1 class="title">Leaderboard</h1>
     </header>
     <main class="main flexrow">
-    <div class="scores flexcolumn">
-       <div class="Rscore"> 
-        <h2>Recent scores</h2>
-        <button id="refresh">Refresh</button> 
+      <div class="scores flexcolumn">
+        <div class="Rscore">
+          <h2>Recent scores</h2>
+          <button id="refresh">Refresh</button>
         </div>
-     <div class="displayscore"> </div>
-    </div>
+        <div class="displayscore"></div>
+      </div>
 
-    <div class="addscore flexcolumn">
+      <div class="addscore flexcolumn">
         <h1>Add your score</h1>
-       <form action="" id="form" class="flexcolumn"> 
-        <input type="text" id="name"  placeholder="Your name" required>
-        <input type="number" id="number" placeholder="Your score" required>
-        <button type="submit" id="submit">Submit</button>
-    </form>
-    </div>
-
-
+        <form action="" id="form" class="flexcolumn">
+          <input type="text" id="name" placeholder="Your name" required />
+          <input type="number" id="number" placeholder="Your score" required />
+          <button type="submit" id="submit">Submit</button>
+        </form>
+      </div>
     </main>
-</body>
+  </body>
 </html>
