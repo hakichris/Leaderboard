@@ -1,5 +1,4 @@
-import LocalStorage from '.Localstorage.js';
-
+import LocalStorage from './Localstorage';
 
 export default class UI {
 
@@ -17,7 +16,15 @@ static showAllTasks(input){
     namescore.classList.add(colorClass);
     namescore.setAttribute('id', input.id);
     namescore.innerHTML = `<p><span>"${input.name}"</span>: ${input.score}</p>`;
-    namescorelist.appendChild(book);
+    namescorelist.appendChild(namescore);
+}
+
+static reloadPage() {
+  const datalist = LocalStorage.getData();
+  datalist.forEach((input) => {
+   this.showAllTasks(input)
+  });
+  LocalStorage.saveData(datalist);
 }
 }
 
