@@ -2,9 +2,8 @@ import './style.css';
 import LocalStorage from './Localstorage.js';
 import score from './Score.js'
 import UI from './UI';
-import { Console } from 'console';
 
-let Data;
+let Data = [];
 if (LocalStorage.getData() === null) {
   Data = [];
 } else {
@@ -21,20 +20,32 @@ const getInput = () => {
   };
 
 const addscore = (input) => {
-    Data = LocalStorage.getData();
     Data.push(input);
     LocalStorage.saveData(Data);
-    // UI.showAllTasks(input);
   };
 
-const addNewinput = document.querySelector('#submit');
+const addNewinput = document.getElementById('submit');
 addNewinput.addEventListener('click', () => {
    const newinput = getInput();
     addscore(newinput);
-    UI.showAllTasks(newInput);
+    UI.showAllTasks(newinput);
   });
+ 
 
+const btnRefresh = document.querySelector('#refresh');
+btnRefresh.addEventListener('click', () => {
+  window.location.reload();
+  UI.reloadPage();
+});
+
+const load =() => {
+  let datalist = LocalStorage.getData();
+    if (datalist === null) {
+      datalist = [];
+    }
+    datalist.forEach((input) => UI.showAllTasks(input));
+}
 
   window.onload = () => {
-    Data.load();
+    load();
   };
