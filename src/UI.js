@@ -1,4 +1,4 @@
-import LocalStorage from './Localstorage.js';
+import LocalStorage from '.Localstorage.js';
 
 
 export default class UI {
