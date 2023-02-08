@@ -2,6 +2,7 @@ import './style.css';
 import LocalStorage from './Localstorage.js';
 import score from './Score.js'
 import UI from './UI';
+import { Console } from 'console';
 
 let Data;
 if (LocalStorage.getData() === null) {
@@ -27,6 +28,7 @@ const addscore = (input) => {
   };
 
 const addNewinput = document.querySelector('#submit');
+Console.log()
 addNewinput.addEventListener('click', () => {
    const newinput = getInput();
     addscore(newinput);
