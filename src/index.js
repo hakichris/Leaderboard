@@ -28,7 +28,6 @@ const addscore = (input) => {
   };
 
 const addNewinput = document.querySelector('#submit');
-Console.log()
 addNewinput.addEventListener('click', () => {
    const newinput = getInput();
     addscore(newinput);
