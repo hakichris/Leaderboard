@@ -13,6 +13,7 @@ adding.addEventListener('click', async (e) => {
   console.log(user.value, score.value);
   user.value = '';
   score.value = '';
+  UI.displayScore();
 });
 
 refresh.addEventListener('click', async () => {
