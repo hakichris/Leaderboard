@@ -1,7 +1,6 @@
 export default class API {
   static saveData = async (user, userScore) => {
-    const url =
-      'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
+    const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
     const id = '0oB7cziYAqgRf6ROSq4e';
     const identifierUrl = `${url}games/${id}/scores/`;
 
@@ -20,8 +19,7 @@ export default class API {
   };
 
   static getScore = async () => {
-    const url =
-      'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
+    const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';
     const id = '0oB7cziYAqgRf6ROSq4e';
     const identifierUrl = `${url}games/${id}/scores/`;
 
