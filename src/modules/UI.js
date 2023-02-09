@@ -6,7 +6,7 @@ export default class UI {
     const scorelist = document.querySelector('.displayscore');
     scorelist.innerHTML = '';
     res.forEach((score) => {
-      scorelist.innerHTML += `<li>
+      scorelist.innerHTML += `<li class="border">
     ${score.user}:${score.score}
    </li>`;
     });
