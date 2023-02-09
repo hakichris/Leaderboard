@@ -10,7 +10,6 @@ const user = document.getElementById('user');
 adding.addEventListener('click', async (e) => {
   e.preventDefault();
   await API.saveData(user.value, Number(score.value));
-  console.log(user.value, score.value);
   user.value = '';
   score.value = '';
   UI.displayScore();

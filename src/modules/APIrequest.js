@@ -16,7 +16,6 @@ export default class API {
       }),
     });
     const res = await response.json();
-    console.log('check the data here:', res);
     return res.result;
   };
 
