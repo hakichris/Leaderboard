@@ -15,14 +15,14 @@
           <h2>Recent scores</h2>
           <button id="refresh">Refresh</button>
         </div>
-        <div class="displayscore"></div>
+        <ul class="displayscore"></ul>
       </div>
 
       <div class="addscore flexcolumn">
         <h1>Add your score</h1>
-        <form action="" id="form" class="flexcolumn">
-          <input type="text" id="name" placeholder="Your name" required />
-          <input type="number" id="number" placeholder="Your score" required />
+        <form id="form" method="post" class="flexcolumn">
+          <input type="text" id="user" placeholder="Your name" required />
+          <input type="number" id="score" placeholder="Your score" required />
           <button type="submit" id="submit">Submit</button>
         </form>
       </div>

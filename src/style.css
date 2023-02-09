@@ -5,22 +5,29 @@
 }
 
 .flexrow {
-  width: 40vw;
   margin-left: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 100px;
 }
 
 ul,
+p,
 li {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
+.dark {
+  background-color: #87888a;
+}
+
+.light {
+  background-color: #bdc0c7;
+}
+
 .displayscore {
-  width: 18vw;
   border: 1px solid #000;
 }
 
