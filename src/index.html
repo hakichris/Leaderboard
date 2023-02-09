@@ -7,22 +7,22 @@
   </head>
   <body>
     <header>
-      <h1 class="title">Leaderboard</h1>
+      <h1 class="title flex">Leaderboard game</h1>
     </header>
-    <main class="main flexrow">
+    <main class="main flexrow flex">
       <div class="scores flexcolumn">
         <div class="Rscore">
-          <h2>Recent scores</h2>
+          <h2>Check Recent scores</h2>
           <button id="refresh">Refresh</button>
-        </div>
+        </div class="border">
         <ul class="displayscore"></ul>
       </div>
 
       <div class="addscore flexcolumn">
-        <h1>Add your score</h1>
+        <h1>Add your score here: </h1>
         <form id="form" method="post" class="flexcolumn">
-          <input type="text" id="user" placeholder="Your name" required />
-          <input type="number" id="score" placeholder="Your score" required />
+          <input type="text" class="border" id="user" placeholder="Your name" required />
+          <input type="number" class="border"  id="score" placeholder="Your score" required />
           <button type="submit" id="submit">Submit</button>
         </form>
       </div>
