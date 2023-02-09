@@ -28,7 +28,6 @@
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
@@ -135,10 +134,6 @@ If you like this project to be used for educational purpose. if you like my proj
 > Give credit to everyone who inspired your codebase.
 
 I would like to thank Microverse for this amazing opportunity. 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
