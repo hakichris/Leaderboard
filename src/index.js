@@ -1,51 +1,29 @@
 import './style.css';
-import API from './APIrequest';
-import score from './Score.js';
-import UI from './UI';
+import API from './modules/APIrequest';
+import UI from './modules/UI';
 
-let Data = [];
-if (API.getData() === null) {
-  Data = [];
-} else {
-  Data = API.getData();
-}
 
-const getInput = () => {
-  const nameinput = document.getElementById('name');
-  const scoreinput = document.getElementById('number');
-  const newInput = new score(nameinput.value, scoreinput.value);
-  nameinput.value = '';
-  scoreinput.value = '';
-  return newInput;
-};
+const adding = document.getElementById('submit');
+const refresh = document.getElementById('refresh');
+const score = document.getElementById('score');
+const user = document.getElementById('user');
 
-const addscore = (input) => {
-  Data.push(input);
-  API.saveData(Data);
-};
-
-const addNewinput = document.getElementById('submit');
-addNewinput.addEventListener('submit', (e) => {
-    // e.preventDefault();
-  const newinput = getInput();
-  addscore(newinput);
-  UI.showAllTasks(newinput);
+adding.addEventListener('click', async (e) => {
+  e.preventDefault();
+  await API.saveData(user.value, Number(score.value));
+  console.log(user.value, score.value)
+  user.value = '';
+  score.value = '';
 });
 
-const btnRefresh = document.querySelector('#refresh');
-btnRefresh.addEventListener('click', () => {
+refresh.addEventListener('click', async () => {
   window.location.reload();
-  UI.reloadPage();
+  UI.displayScore();;
 });
 
-const load = () => {
-  let datalist = API.getData();
-  if (datalist === null) {
-    datalist = [];
-  }
-  datalist.forEach((input) => UI.showAllTasks(input));
-};
+document.addEventListener('DOMContentLoaded', async () => {
+  UI.displayScore();;
+});
 
-window.onload = () => {
-  load();
-};
+
+

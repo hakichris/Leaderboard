@@ -109,43 +109,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
-/***/ "./src/Localstorage.js":
-/*!*****************************!*\
-  !*** ./src/Localstorage.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ LocalStorage)\n/* harmony export */ });\nclass LocalStorage {    \n    static saveData = async (data) => {\n        const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';\n        const id = 'ZoYj32n2PDx3qYDNjDIm';\n        const identifierUrl = `${url}games/${id}/data/`;\n\n        const response = await fetch(identifierUrl, {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json',\n          },\n          body: JSON.stringify(data),\n        });\n        const res = await response.json();\n          return res.result;  \n      };\n\n  static getData = async () => {\n    const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';\n    const id = 'ZoYj32n2PDx3qYDNjDIm';\n    const identifierUrl = `${url}games/${id}/data/`;\n      const response = await fetch(identifierUrl, {\n          });\n          const res = await response.json();\n          return res.result;\n}\n}\n\n\n//# sourceURL=webpack://leaderboard/./src/Localstorage.js?");
-
-/***/ }),
-
-/***/ "./src/Score.js":
-/*!**********************!*\
-  !*** ./src/Score.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ score)\n/* harmony export */ });\nclass score {\n    constructor(name, score) {\n      this.name = name;\n      this.score = score;\n      this.id = Math.random();\n    }\n  }\n\n//# sourceURL=webpack://leaderboard/./src/Score.js?");
-
-/***/ }),
-
-/***/ "./src/UI.js":
-/*!*******************!*\
-  !*** ./src/UI.js ***!
-  \*******************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ UI)\n/* harmony export */ });\n/* harmony import */ var _Localstorage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Localstorage */ \"./src/Localstorage.js\");\n\n\nclass UI {\n\nstatic showAllTasks(input){\n    let Data = _Localstorage__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getData();\n    let colorClass = '';\n    Data.forEach((input) => {\n      if (Data.indexOf(input) % 2 !== 0) {\n        colorClass = 'light';\n      } else {\n        colorClass = 'dark';\n      }\n    })\n   \n    const namescorelist = document.querySelector('.displayscore');\n    const namescore = document.createElement('li');\n    namescore.classList.add('listscore');\n    namescore.classList.add(colorClass);\n    namescore.setAttribute('id', input.id);\n    namescore.innerHTML = `<p><span>\"${input.name}\"</span>: ${input.score}</p>`;\n    namescorelist.appendChild(namescore);\n}\n\nstatic reloadPage() {\n  const datalist = _Localstorage__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getData();\n  datalist.forEach((input) => {\n   this.showAllTasks(input)\n  });\n  _Localstorage__WEBPACK_IMPORTED_MODULE_0__[\"default\"].saveData(datalist);\n}\n}\n\n\n\n\n//# sourceURL=webpack://leaderboard/./src/UI.js?");
-
-/***/ }),
-
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _Localstorage_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Localstorage.js */ \"./src/Localstorage.js\");\n/* harmony import */ var _Score_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Score.js */ \"./src/Score.js\");\n/* harmony import */ var _UI__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UI */ \"./src/UI.js\");\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module 'http2'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\n\n\n\n\n\n\nlet Data = [];\nif (_Localstorage_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"].getData() === null) {\n  Data = [];\n} else {\n  Data = _Localstorage_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"].getData();\n}\n\nconst getInput = () => {\n  const nameinput = document.getElementById('name');\n  const scoreinput = document.getElementById('number');\n  const newInput = new _Score_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](nameinput.value, scoreinput.value);\n  nameinput.value = '';\n  scoreinput.value = '';\n  return newInput;\n};\n\nconst addscore = (input) => {\n  Data.push(input);\n  _Localstorage_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"].saveData(Data);\n};\n\nconst addNewinput = document.getElementById('submit');\naddNewinput.addEventListener('submit', (e) => {\n    e.preventDefault();\n  const newinput = getInput();\n  addscore(newinput);\n  _UI__WEBPACK_IMPORTED_MODULE_3__[\"default\"].showAllTasks(newinput);\n});\n\nconst btnRefresh = document.querySelector('#refresh');\nbtnRefresh.addEventListener('click', () => {\n  window.location.reload();\n  _UI__WEBPACK_IMPORTED_MODULE_3__[\"default\"].reloadPage();\n});\n\nconst load = () => {\n  let datalist = _Localstorage_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"].getData();\n  if (datalist === null) {\n    datalist = [];\n  }\n  datalist.forEach((input) => _UI__WEBPACK_IMPORTED_MODULE_3__[\"default\"].showAllTasks(input));\n};\n\nwindow.onload = () => {\n  load();\n};\n\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_APIrequest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/APIrequest */ \"./src/modules/APIrequest.js\");\n/* harmony import */ var _modules_UI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/UI */ \"./src/modules/UI.js\");\n\n\n\n\n\nconst adding = document.getElementById('submit');\nconst refresh = document.getElementById('refresh');\nconst score = document.getElementById('score');\nconst user = document.getElementById('user');\n\nadding.addEventListener('click', async (e) => {\n  e.preventDefault();\n  await _modules_APIrequest__WEBPACK_IMPORTED_MODULE_1__[\"default\"].saveData(user.value, Number(score.value));\n  user.value = '';\n  score.value = '';\n});\n\nrefresh.addEventListener('click', async () => {\n  window.location.reload();\n  _modules_UI__WEBPACK_IMPORTED_MODULE_2__[\"default\"].displayScore();;\n});\n\ndocument.addEventListener('DOMContentLoaded', async () => {\n  _modules_UI__WEBPACK_IMPORTED_MODULE_2__[\"default\"].displayScore();;\n});\n\n\n\n\n\n//# sourceURL=webpack://leaderboard/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/APIrequest.js":
+/*!***********************************!*\
+  !*** ./src/modules/APIrequest.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ API)\n/* harmony export */ });\nclass API {    \n  static saveData = async (user, userScore) => {\n        const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';\n        const id = '0oB7cziYAqgRf6ROSq4e';\n        const identifierUrl = `${url}games/${id}/scores/`;\n\n          const response = await fetch(identifierUrl, {\n            method: 'POST',\n            headers: {\n              'Content-Type': 'application/json',\n            },\n            body: JSON.stringify({ user: `${user}`, score: userScore }),\n          });\n          const res = await response.json();\n          return res.result;\n        };\n        \n  \n\n static getScore = async () => {\n      const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/';\n      const id = '0oB7cziYAqgRf6ROSq4e';\n      const identifierUrl = `${url}games/${id}/score/`;\n\n      const response = await fetch(identifierUrl, {\n      });\n      const res = await response.json();\n      return res.result;\n    };\n}\n\n\n\n//# sourceURL=webpack://leaderboard/./src/modules/APIrequest.js?");
+
+/***/ }),
+
+/***/ "./src/modules/UI.js":
+/*!***************************!*\
+  !*** ./src/modules/UI.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ UI)\n/* harmony export */ });\n/* harmony import */ var _APIrequest__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./APIrequest */ \"./src/modules/APIrequest.js\");\n\n\nclass UI {\nstatic displayScore = async () => {\n  const res = await _APIrequest__WEBPACK_IMPORTED_MODULE_0__[\"default\"].getScore();\n  const scorelist = document.querySelector('.displayscore');\n  scorelist.innerHTML = '';\n  res.forEach((score) => {\n    scorelist.innerHTML += `<li>\n    ${score.user}:${score.score}\n   </li>`;\n  });\n};\n}\n\n\n\n\n\n//# sourceURL=webpack://leaderboard/./src/modules/UI.js?");
 
 /***/ })
 
